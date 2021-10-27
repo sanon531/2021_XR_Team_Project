@@ -38,11 +38,9 @@ public class Bike_CheckObject : CheckObject
 
     private void OnCollisionEnter(Collision collision)
     {
-        _rigidbody.isKinematic = true;
     }
     private void OnCollisionExit(Collision collision)
     {
-        _rigidbody.isKinematic = false;
 
     }
 
