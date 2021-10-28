@@ -21,7 +21,6 @@ public class PlacingObjectNoticer : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<CheckObject>()._objectStatus == ObjectStatus.Fine)
         {
-            //FXPlayer.PlayFX();
             Destroy(collision.gameObject);
         }
         else
