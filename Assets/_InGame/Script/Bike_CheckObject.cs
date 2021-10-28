@@ -8,6 +8,8 @@ public class Bike_CheckObject : CheckObject
 
     [SerializeField] BoxCollider _collider;
     [SerializeField] Rigidbody _rigidbody;
+    [SerializeField]
+    Material _wrongMaterial; 
 
     [SerializeField] List<GameObject> _childList;
 
