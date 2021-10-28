@@ -37,15 +37,17 @@ public class Bike_CheckObject : CheckObject
                 break;
         }
     }
+    bool _isPlaced = false;
 
     private void OnCollisionEnter(Collision collision)
     {
+
     }
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
 
     }
-
 
     public void CallCracked()
     {
