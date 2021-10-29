@@ -25,8 +25,8 @@ public class Bike_CheckObject : CheckObject
         {
             case ObjectStatus.Fine:
                 break;
-            case ObjectStatus.Defect_Cracked:
-                CallCracked();
+            case ObjectStatus.Defect_DifferentMat:
+                CallDifferentMat();
                 break;
             case ObjectStatus.Defect_PartsLoss:
                 CallPartLoss();
@@ -37,20 +37,27 @@ public class Bike_CheckObject : CheckObject
                 break;
         }
     }
-    bool _isPlaced = false;
 
-    private void OnCollisionEnter(Collision collision)
+    public void CallDifferentMat()
     {
+        List<int> _falsePlaceList = new List<int>();
+        for (int i = 0; i < _childList.Count; i++)
+            _falsePlaceList.Add(i);
 
-    }
+        int _falsePlace1 = _falsePlaceList[Random.Range(0, _falsePlaceList.Count)];
+        _falsePlaceList.Remove(_falsePlace1);
+        int _falsePlace2 = _falsePlaceList[Random.Range(0, _falsePlaceList.Count)];
+        _falsePlaceList.Remove(_falsePlace2);
+        int _falsePlace3 = _falsePlaceList[Random.Range(0, _falsePlaceList.Count)];
+        _falsePlaceList.Remove(_falsePlace3);
+        GameObject _crackedTarget;
+        _crackedTarget = _childList[_falsePlace1];
+        _crackedTarget.GetComponent<MeshRenderer>().material = _wrongMaterial;
+        _crackedTarget = _childList[_falsePlace2];
+        _crackedTarget.GetComponent<MeshRenderer>().material = _wrongMaterial;
+        _crackedTarget = _childList[_falsePlace3];
+        _crackedTarget.GetComponent<MeshRenderer>().material = _wrongMaterial;
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-    }
-
-    public void CallCracked()
-    {
 
     }
     public void CallPartLoss()

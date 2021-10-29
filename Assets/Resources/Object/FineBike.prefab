@@ -137,7 +137,7 @@ MonoBehaviour:
   _objectStatus: 0
   _collider: {fileID: 5431276320496136933}
   _rigidbody: {fileID: 5431276320496136929}
-  _wrongMaterial: {fileID: 0}
+  _wrongMaterial: {fileID: 2100000, guid: d23c4c8073d133e469a18516df1da308, type: 2}
   _childList:
   - {fileID: 5429734237118868468}
   - {fileID: 5429867209062862436}

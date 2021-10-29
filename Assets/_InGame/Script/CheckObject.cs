@@ -11,7 +11,7 @@ public enum ObjectStatus
     Defect_PartsLoss,
     
     // 매터리얼 수정된 버전으로 긁힌게 보임.
-    Defect_Cracked,
+    Defect_DifferentMat,
     
     //흔들면 소리가 남
     Defect_InnerCrush,

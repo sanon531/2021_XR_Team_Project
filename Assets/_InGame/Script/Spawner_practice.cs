@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class Spawner_practice : MonoBehaviour
+public class Spawner_practice : Spawner_Base
 {
 
     public static Spawner_practice instance;
@@ -65,11 +65,17 @@ public class Spawner_practice : MonoBehaviour
             GameObject _spawnObject = Instantiate(_checkObject, _tranform.position, Quaternion.identity, gameObject.transform);
 
             CheckObject _check = _spawnObject.GetComponent<CheckObject>();
-            if (Random.Range(0,2) == 1)
+            int i = Random.Range(0, 3);
+            if (i == 1)
             {
-                _spawnObject.name = "flawed";
-                
+                _spawnObject.name = "PartsLoss";
                 _check._objectStatus = ObjectStatus.Defect_PartsLoss;
+            }
+            else if(i == 2)
+            {
+                _spawnObject.name = "";
+                _check._objectStatus = ObjectStatus.Defect_DifferentMat;
+
             }
 
             _check.InitializeObject();

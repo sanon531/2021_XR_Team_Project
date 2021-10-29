@@ -8,7 +8,7 @@ public static class Data_CheckObject
     {
         ObjectStatus.Fine,
         ObjectStatus.Defect_PartsLoss,
-        ObjectStatus.Defect_Cracked
+        ObjectStatus.Defect_DifferentMat
  
     };
 
