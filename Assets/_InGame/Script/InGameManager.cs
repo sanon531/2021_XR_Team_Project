@@ -15,21 +15,18 @@ public class InGameManager : MonoBehaviour
     {
         instance = this;
         _spawner_Practice = GameObject.Find("Spawner").GetComponent<Spawner_practice>();
-        _spawner_Practice.BeginObject(_currentList, _max_Capacity);
+        _spawner_Practice.BeginObject();
     }
 
     public void CheckCapacityOver(int _currentCap)
     {
 
-        if (_max_Capacity < _currentCap)
-        {
-            GameFailed();
-        }
     }
 
-    private void GameFailed()
+    private void GameEnd()
     {
-        Debug.Log("GameOver");
+
+
     }
 
 

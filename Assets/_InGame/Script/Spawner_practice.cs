@@ -11,78 +11,64 @@ public class Spawner_practice : Spawner_Base
     [SerializeField]
     List<Transform> _spawnPoss;
 
-    [SerializeField]
-    int _currentCapacity,_maxCapacity = 0 ;
 
     [SerializeField]
     GameObject _checkObject;
 
     [SerializeField]
-    Image _timerClock, _leftTime;
+    Text _currentWaveName;
 
     [SerializeField]
     TextMeshProUGUI _checkCap;
 
-    float _spawnTerm = 5f;
-    List<float> _termList = new List<float>(); 
 
-    public void BeginObject(List<float> _argtermList,int _argMaxCap)
+    public void BeginObject()
     {
         instance = this;
-        _termList = _argtermList;
-        _spawnTerm = _termList[0];
-        _maxCapacity = _argMaxCap;
     }
 
 
     float _currentTime=0;
-    int i_count = 0;
+    float _waveTerm = 60f;
+    float _currentWave = 0;
+    bool _isGameStart = false;
+
+
     private void Update()
     {
-        _currentTime += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space))
-            SpawnInOrder();
+        if (_isGameStart)
+            _currentTime += Time.deltaTime;
 
-        _timerClock.fillAmount = (_currentTime / _spawnTerm);
-        if (_currentTime > _spawnTerm)
-        {
+        if (_currentTime > _waveTerm)
             _currentTime = 0;
-            SpawnInOrder();
-            i_count++;
-            if (i_count < _termList.Count)
-                _spawnTerm = _termList[i_count];
-            else
-            { }
-        }
+
 
 
     }
 
+    public void WaveChanged(GameObject _argCheckOBJ)
+    {
+        _checkObject = _argCheckOBJ;
+    }
     public void SpawnInOrder()
     {
+        int _true_i = Random.Range(0, 4);
+        int i = 0;
         foreach (Transform _tranform in _spawnPoss)
         {
             GameObject _spawnObject = Instantiate(_checkObject, _tranform.position, Quaternion.identity, gameObject.transform);
 
             CheckObject _check = _spawnObject.GetComponent<CheckObject>();
-            int i = Random.Range(0, 3);
-            if (i == 1)
-            {
-                _spawnObject.name = "PartsLoss";
-                _check._objectStatus = ObjectStatus.Defect_PartsLoss;
-            }
-            else if(i == 2)
-            {
-                _spawnObject.name = "";
-                _check._objectStatus = ObjectStatus.Defect_DifferentMat;
 
+            if (i != _true_i)
+            {
+                ObjectStatus _falseState = (ObjectStatus)Random.Range(1, 4);
+                _spawnObject.name = _falseState.ToString();
+                _check._objectStatus = _falseState;
             }
-
             _check.InitializeObject();
-            _currentCapacity++;
+            i++;
         }
-        SetCapToText();
-        InGameManager.instance.CheckCapacityOver(_currentCapacity);
     }
 
 
@@ -91,18 +77,9 @@ public class Spawner_practice : Spawner_Base
     {
         if (_isSuccess)
         {
-            _currentCapacity--;
+            //yEAH
         }
-        SetCapToText();
     }
 
 
-    void SetCapToText()
-    {
-        _checkCap.text = "현재 물건 : ";
-        _checkCap.text += _currentCapacity.ToString();
-        _checkCap.text += "/";
-        _checkCap.text += _maxCapacity.ToString();
-
-    }
 }
