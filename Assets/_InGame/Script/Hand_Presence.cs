@@ -31,7 +31,6 @@ public class Hand_Presence : MonoBehaviour
         if (devices.Count > 0)
         {
             _targetDevice = devices[0];
-            Debug.Log(_targetDevice.name);
             GameObject prefab = _controllerPrefabs.Find(controller=> controller.name == _targetDevice.name);
 
             if (prefab)
