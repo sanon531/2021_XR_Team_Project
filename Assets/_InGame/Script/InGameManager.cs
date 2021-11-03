@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class InGameManager : MonoBehaviour
 {
     public static InGameManager instance;
-
 
     public int _max_Capacity;
     private Spawner_practice _spawner_Practice;
@@ -18,16 +17,13 @@ public class InGameManager : MonoBehaviour
         _spawner_Practice.BeginObject();
     }
 
-    public void CheckCapacityOver(int _currentCap)
-    {
-
-    }
-
-    private void GameEnd()
+    public void GameEnd()
     {
 
 
     }
+
+ 
 
 
 

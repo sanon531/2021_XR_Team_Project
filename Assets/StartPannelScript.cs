@@ -7,22 +7,23 @@ using TMPro;
 public class StartPannelScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject _evalSet;
+    public static StartPannelScript instance;
     Button _startButton;
     ButtonFunctions[] _startFucntions;
-
     TextMeshProUGUI _countDownText;
+    RectTransform _playPannel;
 
 
     void Awake()
     {
-        _evalSet = GameObject.Find("EvaluationSet");
-        _evalSet.SetActive(false);
+        instance = this;
+        
         _startButton = GameObject.Find("SP_GameStartButton").GetComponent<Button>();
         _startFucntions = GameObject.Find("SP_StartFunctions").GetComponents<ButtonFunctions>();
         _startButton.onClick.AddListener(() => PressedStartButton());
         _countDownText = GameObject.Find("SP_CountDown").GetComponent<TextMeshProUGUI>();
-
+        _playPannel = GameObject.Find("PlayPanel").GetComponent<RectTransform>();
+        _playPannel.gameObject.SetActive(false);
     }
 
     void PressedStartButton()
@@ -52,9 +53,26 @@ public class StartPannelScript : MonoBehaviour
         _countDownText.rectTransform.localScale = new Vector3(0, 0, 0);
         _countDownText.rectTransform.DOScale(1, 1f);
         yield return new WaitForSeconds(1f);
+        _countDownText.rectTransform.localScale = new Vector3(0, 0, 0);
+        ShowPlayPannel();
+    }
 
+    void ShowPlayPannel()
+    {
+        _playPannel.gameObject.SetActive(true);
+        PlayPanelScript.instance.StartGamePlay();
+    }
+    void HidePlayPannel()
+    {
 
     }
 
+
+
+    void FinishGame()
+    {
+
+
+    }
 
 }

@@ -47,15 +47,13 @@ public class PlacingObjectNoticer : MonoBehaviour
         {
             _successParticle.Play();
             _successAudio.Play();
-            Spawner_practice.instance.DeleteObject(_isSuccess);
-            Destroy(other.gameObject);
+            Spawner_practice.instance.DeleteObject(other.gameObject,_isSuccess);
         }
         else
         {
             _failedParticle.Play();
             _failedAudio.Play();
-            Spawner_practice.instance.DeleteObject(!_isSuccess);
-            Destroy(other.gameObject);
+            Spawner_practice.instance.DeleteObject(other.gameObject, !_isSuccess);
         }
 
     }
