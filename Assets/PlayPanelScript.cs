@@ -8,9 +8,12 @@ using TMPro;
 public class PlayPanelScript : MonoBehaviour
 {
     public static PlayPanelScript instance;
-    private TextMeshProUGUI _currentTimeLeft, _currentWaveName, _currentScorePanel;
+    private TextMeshProUGUI _currentTimeLeft, _currentWaveName, _currentScorePanel,
+        _endScore, _endHighScore;
     private Image _gaugeImage;
-    GameObject _evalSet;
+    GameObject _evalSet, _resultPanel;
+    ParticleSystem _HighScoreParticle;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -22,6 +25,12 @@ public class PlayPanelScript : MonoBehaviour
         _currentWaveName = GameObject.Find("PP_CurrentWaveText").GetComponent<TextMeshProUGUI>();
         _currentScorePanel = GameObject.Find("PP_Score").GetComponent<TextMeshProUGUI>();
         _gaugeImage = GameObject.Find("PP_TimerSprite").GetComponent<Image>();
+
+
+        _resultPanel = GameObject.Find("ResultPanel");
+        _endScore = GameObject.Find("RP_CurrentScore").GetComponent<TextMeshProUGUI>();
+        _endHighScore = GameObject.Find("RP_HighScore").GetComponent<TextMeshProUGUI>();
+        _resultPanel.SetActive(false);
     }
 
     public void StartGamePlay()
@@ -34,8 +43,9 @@ public class PlayPanelScript : MonoBehaviour
 
     float _currentTime = 0;
     float _currentScore = 0;
-    float _waveTerm = 60f;
-    float _currentWave = 0;
+    [SerializeField]
+    float _waveTerm = 20f;
+    int _currentWave = 0;
 
     bool _isGameStart = false;
 
@@ -48,18 +58,23 @@ public class PlayPanelScript : MonoBehaviour
             if (_currentTime > _waveTerm)
             {
                 _currentTime = 0;
-                _currentWaveName.SetText("Current Wave :" + _currentWave.ToString());
-                if (++_currentWave > 3)
+                ++_currentWave;
+                Spawner_practice.instance.ClearObject();
+
+                if (_currentWave > 2)
                 {
                     InGameManager.instance.GameEnd();
-                    _isGameStart = false;
+                    ShowGameResult();
+                    return;
                 }
-                Spawner_practice.instance.ClearObject();
+
+                Spawner_practice.instance.SpawnInOrder();
+                _currentWaveName.SetText("Current Wave :" + (_currentWave+1).ToString());
             }
 
             float _temptTime = _waveTerm - _currentTime;
             _currentTimeLeft.SetText(Mathf.RoundToInt(_temptTime).ToString());
-            _gaugeImage.fillAmount = (_temptTime/ _waveTerm);
+            _gaugeImage.fillAmount = (_temptTime / _waveTerm);
         }
 
     }
@@ -75,4 +90,35 @@ public class PlayPanelScript : MonoBehaviour
         _currentScorePanel.SetText(_currentScore.ToString());
 
     }
+
+
+    void ShowGameResult()
+    {
+        _isGameStart = false;
+        _resultPanel.SetActive(true);
+        _endScore.SetText(" Result : "+ _currentScore.ToString());
+        float _ex_highScore = PlayerPrefs.GetFloat("HighScore", 0);
+
+        if (_currentScore > _ex_highScore)
+        {
+            PlayerPrefs.SetFloat("HighScore", _currentScore);
+            _ex_highScore = _currentScore;
+        }
+        _endHighScore.SetText("HighScore : "+_ex_highScore.ToString());
+
+    }
+
+    public void TurnOffGameResult()
+    {
+        _resultPanel.SetActive(false);
+    }
+
+
+    public void EndGamePlay()
+    {
+        _isGameStart = false;
+        _evalSet.SetActive(false);
+        Spawner_practice.instance.ClearObject();
+    }
+
 }

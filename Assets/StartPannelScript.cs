@@ -9,8 +9,8 @@ public class StartPannelScript : MonoBehaviour
     // Start is called before the first frame update
     public static StartPannelScript instance;
     Button _startButton;
-    ButtonFunctions[] _startFucntions;
-    TextMeshProUGUI _countDownText;
+    ButtonFunctions[] _startFucntions,_endFunctions;
+    TextMeshProUGUI _countDownText,_highScoreText;
     RectTransform _playPannel;
 
 
@@ -20,8 +20,11 @@ public class StartPannelScript : MonoBehaviour
         
         _startButton = GameObject.Find("SP_GameStartButton").GetComponent<Button>();
         _startFucntions = GameObject.Find("SP_StartFunctions").GetComponents<ButtonFunctions>();
+        _endFunctions = GameObject.Find("SP_EndFunctions").GetComponents<ButtonFunctions>();
         _startButton.onClick.AddListener(() => PressedStartButton());
         _countDownText = GameObject.Find("SP_CountDown").GetComponent<TextMeshProUGUI>();
+        _highScoreText = GameObject.Find("SP_HighScoreText").GetComponent<TextMeshProUGUI>();
+        _highScoreText.SetText("HighScore : " + PlayerPrefs.GetFloat("HighScore", 0).ToString());
         _playPannel = GameObject.Find("PlayPanel").GetComponent<RectTransform>();
         _playPannel.gameObject.SetActive(false);
     }
@@ -64,15 +67,21 @@ public class StartPannelScript : MonoBehaviour
     }
     void HidePlayPannel()
     {
-
+        PlayPanelScript.instance.StartGamePlay();
+        _playPannel.gameObject.SetActive(false);
     }
 
 
 
-    void FinishGame()
+    public void ReturnStartMenu()
     {
-
-
+        foreach (ButtonFunctions functions in _endFunctions)
+        {
+            functions.OnClick();
+        }
+        _highScoreText.SetText("HighScore : " + PlayerPrefs.GetFloat("HighScore", 0).ToString());
+        PlayPanelScript.instance.TurnOffGameResult();
+        _playPannel.gameObject.SetActive(false);
     }
 
 }

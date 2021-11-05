@@ -15,6 +15,7 @@ public class InGameManager : MonoBehaviour
         instance = this;
         _spawner_Practice = GameObject.Find("Spawner").GetComponent<Spawner_practice>();
         _spawner_Practice.BeginObject();
+
     }
 
     public void GameEnd()
