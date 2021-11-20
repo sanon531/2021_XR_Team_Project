@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _TestObject;
 using UnityEngine;
 
 public class PlacingObjectNoticer : MonoBehaviour
@@ -31,19 +32,14 @@ public class PlacingObjectNoticer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
 
-        if (!other.gameObject.GetComponent<CheckObject>())
+        if (!other.gameObject.GetComponent<TestObject>())
             return;
 
-        if (other.gameObject.GetComponent<CheckObject>()._objectStatus == ObjectStatus.Fine)
+        if (other.gameObject.GetComponent<TestObject>().IsCorrectObject)
         {
             _successParticle.Play();
             _successAudio.Play();
