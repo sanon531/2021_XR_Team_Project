@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6286aeefa786244bf8bab614801591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useDebug: 1
+  useDebug: 0
   debug_defectFeatures:
   - {fileID: 847519401081110077}
   - {fileID: 6390638614738903239}
