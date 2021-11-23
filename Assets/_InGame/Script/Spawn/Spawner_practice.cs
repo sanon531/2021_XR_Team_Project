@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using _TestObject;
 public class Spawner_practice : Spawner_Base
 {
 
@@ -28,25 +29,25 @@ public class Spawner_practice : Spawner_Base
 
 
     [SerializeField]
-    int _currentPickNum = 4;
+    int _currentPickNum = 3;
 
     public void SpawnInOrder()
     {
-        _currentPickNum = 4;
-        int _true_i = Random.Range(0, 4);
+        _currentPickNum = 3;
+        int _true_i = Random.Range(0, 3);
         int i = 0;
         foreach (Transform _tranform in _spawnPoss)
         {
             GameObject _spawnObject = Instantiate(_checkObject[i], _tranform.position, Quaternion.identity, gameObject.transform);
             _currentSettedList.Add(_spawnObject);
-            CheckObject _check = _spawnObject.GetComponent<CheckObject>();
             if (i != _true_i)
             {
-                ObjectStatus _falseState = (ObjectStatus)Random.Range(1, 4);
-                _spawnObject.name = _falseState.ToString();
-                _check._objectStatus = _falseState;
+                float _random = Random.Range(0f, 1f);
+                if (_random > 0.5f)
+                    _spawnObject.GetComponent<TestObject>().SetDefect(1);
+                else
+                    _spawnObject.GetComponent<TestObject>().SetDefect(0);
             }
-            _check.InitializeObject();
             i++;
         }
     }
