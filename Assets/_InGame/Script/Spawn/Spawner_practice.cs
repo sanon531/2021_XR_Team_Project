@@ -26,11 +26,12 @@ public class Spawner_practice : Spawner_Base
     }
 
 
-    [SerializeField] int _currentPickNum = 3;
+    [SerializeField] int _currentPickNum = 0   ;
     int _current_StageInt;
 
     public void SpawnInOrder(int _currentStage)
     {
+        _currentPickNum = 0;
         _current_StageInt = _currentStage;
 
         List<GameObject> temptList = new List<GameObject>();
@@ -45,6 +46,7 @@ public class Spawner_practice : Spawner_Base
 
         for (int i = 0; i < temptList.Count; i++)
         {
+            _currentPickNum++;
             GameObject _spawnObject = gameObject;
 
             _spawnObject = Instantiate(temptList[i], _spawnPoss[i].position, Quaternion.identity, gameObject.transform);
@@ -57,7 +59,6 @@ public class Spawner_practice : Spawner_Base
             else
                 _spawnObject.GetComponent<TestObject>().Initialize(false);
 
-            _currentPickNum ++;
         }
     }
 

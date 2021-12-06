@@ -39,6 +39,8 @@ public class PlayPanelScript : MonoBehaviour
         _isGameStart = true;
         _evalSet.SetActive(true);
         Spawner_practice.instance.SpawnInOrder(0);
+        _currentWave = 0;
+
     }
 
 
