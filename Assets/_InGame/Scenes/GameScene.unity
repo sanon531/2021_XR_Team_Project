@@ -37101,7 +37101,7 @@ MonoBehaviour:
   _checkObject_Stage_1:
   - {fileID: 1883029024278958, guid: 1c930c692e2e70445873d1e26863e42b, type: 3}
   - {fileID: 1532648310549764, guid: b62de269504018a4cbfe6eb0f757490c, type: 3}
-  - {fileID: 1529806831123294, guid: 67d37a85ba2ac5d4288506b53c188546, type: 3}
+  - {fileID: 1532648310549764, guid: b62de269504018a4cbfe6eb0f757490c, type: 3}
   _checkObject_Stage_2:
   - {fileID: 7309115399151955774, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
   - {fileID: 2639644893191006420, guid: a8a715c256e4e24419504f60449ce8fd, type: 3}
@@ -37111,6 +37111,7 @@ MonoBehaviour:
   - {fileID: 1883029024278958, guid: 1c930c692e2e70445873d1e26863e42b, type: 3}
   - {fileID: 1532648310549764, guid: b62de269504018a4cbfe6eb0f757490c, type: 3}
   - {fileID: 1529806831123294, guid: 67d37a85ba2ac5d4288506b53c188546, type: 3}
+  - {fileID: 7309115399151955774, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
   _currentSettedList: []
   _currentPickNum: 4
 --- !u!1 &1152172862

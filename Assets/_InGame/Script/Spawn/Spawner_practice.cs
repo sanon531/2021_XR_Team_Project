@@ -40,16 +40,23 @@ public class Spawner_practice : Spawner_Base
         _current_StageInt = _currentStage;
         _currentPickNum = 3;
         int _true_i = Random.Range(0, 3);
-        int i = 0;
-        foreach (Transform _tranform in _spawnPoss)
+
+        List<GameObject> temptList = new List<GameObject>();
+
+        if (_currentStage == 0)
+            temptList = _checkObject_Stage_1;
+        else if (_currentStage == 1)
+            temptList = _checkObject_Stage_2;
+        else
+            temptList = _checkObject_Stage_3;
+
+
+
+        for (int i = 0; i< temptList.Count; i++)
         {
             GameObject _spawnObject = gameObject;
-            if (_currentStage == 0)
-                _spawnObject = Instantiate(_checkObject_Stage_1[i], _tranform.position, Quaternion.identity, gameObject.transform);
-            else if (_currentStage == 1)
-                _spawnObject = Instantiate(_checkObject_Stage_2[i], _tranform.position, Quaternion.identity, gameObject.transform);
-            else
-                _spawnObject = Instantiate(_checkObject_Stage_3[i], _tranform.position, Quaternion.identity, gameObject.transform);
+
+            _spawnObject = Instantiate(temptList[i], _spawnPoss[i].position, Quaternion.identity, gameObject.transform);
 
             _currentSettedList.Add(_spawnObject);
             if (i != _true_i)
@@ -60,7 +67,6 @@ public class Spawner_practice : Spawner_Base
                 else
                     _spawnObject.GetComponent<TestObject>().SetDefect(0);
             }
-            i++;
         }
     }
 
