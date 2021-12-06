@@ -17,12 +17,13 @@ public class Spawner_practice : Spawner_Base
     List <GameObject> _checkObject_Stage_1;
     [SerializeField]
     List<GameObject> _checkObject_Stage_2;
+    [SerializeField]
+    List<GameObject> _checkObject_Stage_3;
+
 
     [SerializeField]
     List<GameObject> _currentSettedList = new List<GameObject>();
 
-    [SerializeField]
-    TextMeshProUGUI _checkCap;
 
 
     public void BeginObject()
@@ -45,8 +46,10 @@ public class Spawner_practice : Spawner_Base
             GameObject _spawnObject = gameObject;
             if (_currentStage == 0)
                 _spawnObject = Instantiate(_checkObject_Stage_1[i], _tranform.position, Quaternion.identity, gameObject.transform);
-            else
+            else if (_currentStage == 1)
                 _spawnObject = Instantiate(_checkObject_Stage_2[i], _tranform.position, Quaternion.identity, gameObject.transform);
+            else
+                _spawnObject = Instantiate(_checkObject_Stage_3[i], _tranform.position, Quaternion.identity, gameObject.transform);
 
             _currentSettedList.Add(_spawnObject);
             if (i != _true_i)
