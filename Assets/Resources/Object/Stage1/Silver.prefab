@@ -316,9 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useDebug: 0
-  debug_defectFeatures:
-  - {fileID: 847519401081110077}
-  - {fileID: 6390638614738903239}
+  debug_defectFeatures: []
   isCorrectObject: 0
 --- !u!114 &288807981
 MonoBehaviour:

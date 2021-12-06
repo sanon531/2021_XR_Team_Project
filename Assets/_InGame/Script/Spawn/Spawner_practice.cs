@@ -5,25 +5,19 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using _TestObject;
+
 public class Spawner_practice : Spawner_Base
 {
-
     public static Spawner_practice instance;
 
-    [SerializeField]
-    List<Transform> _spawnPoss;
+    [SerializeField] List<Transform> _spawnPoss;
 
-    [SerializeField]
-    List <GameObject> _checkObject_Stage_1;
-    [SerializeField]
-    List<GameObject> _checkObject_Stage_2;
-    [SerializeField]
-    List<GameObject> _checkObject_Stage_3;
+    [SerializeField] List<GameObject> _checkObject_Stage_1;
+    [SerializeField] List<GameObject> _checkObject_Stage_2;
+    [SerializeField] List<GameObject> _checkObject_Stage_3;
 
 
-    [SerializeField]
-    List<GameObject> _currentSettedList = new List<GameObject>();
-
+    [SerializeField] List<GameObject> _currentSettedList = new List<GameObject>();
 
 
     public void BeginObject()
@@ -32,9 +26,9 @@ public class Spawner_practice : Spawner_Base
     }
 
 
-    [SerializeField]
-    int _currentPickNum = 3;
+    [SerializeField] int _currentPickNum = 3;
     int _current_StageInt;
+
     public void SpawnInOrder(int _currentStage)
     {
         _current_StageInt = _currentStage;
@@ -51,25 +45,21 @@ public class Spawner_practice : Spawner_Base
             temptList = _checkObject_Stage_3;
 
 
-
-        for (int i = 0; i< temptList.Count; i++)
+        for (int i = 0; i < temptList.Count; i++)
         {
             GameObject _spawnObject = gameObject;
 
             _spawnObject = Instantiate(temptList[i], _spawnPoss[i].position, Quaternion.identity, gameObject.transform);
 
             _currentSettedList.Add(_spawnObject);
-            if (i != _true_i)
-            {
-                float _random = Random.Range(0f, 1f);
-                if (_random > 0.5f)
-                    _spawnObject.GetComponent<TestObject>().SetDefect(1);
-                else
-                    _spawnObject.GetComponent<TestObject>().SetDefect(0);
-            }
+
+            float _random = Random.Range(0f, 1f);
+            if (_random > 0.5f)
+                _spawnObject.GetComponent<TestObject>().Initialize(true);
+            else
+                _spawnObject.GetComponent<TestObject>().Initialize(false);
         }
     }
-
 
 
     public void DeleteObject(GameObject _argOBJ, bool _isSuccess)
@@ -87,7 +77,6 @@ public class Spawner_practice : Spawner_Base
             if (_currentPickNum <= 0)
                 SpawnInOrder(_current_StageInt);
         }
-
     }
 
     public void ClearObject()
@@ -97,6 +86,4 @@ public class Spawner_practice : Spawner_Base
             Destroy(arg_gameObject);
         }
     }
-
-
 }

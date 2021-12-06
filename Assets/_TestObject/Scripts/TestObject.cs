@@ -9,38 +9,42 @@ namespace _TestObject
     /// </summary>
     public class TestObject : MonoBehaviour
     {
-        [Header("<Debug>")] 
-        [SerializeField] private bool useDebug;
+        [Header("<Debug>")] [SerializeField] private bool useDebug;
         [SerializeField] private List<TestObjectFeature> debug_defectFeatures;
-        
-        [Header("<Test Object>")] 
-        [SerializeField,ReadOnly] private bool isCorrectObject;
-        
+
+        [Header("<Test Object>")] [SerializeField, ReadOnly]
+        private bool isCorrectObject;
+
         public bool IsCorrectObject => isCorrectObject;
+
         private void Start()
         {
-            if(useDebug) SetDefect(debug_defectFeatures);
+            if (useDebug) Initialize(debug_defectFeatures);
         }
-
-        /// <summary>
-        /// defect 개수를 입력,  error 개수만큼 랜덤 기능이 defect
-        /// 0개면 correct object
-        /// </summary>
-        public void SetDefect(int error)
+        
+        public void Initialize(bool hasError)
         {
-            isCorrectObject = error <= 0;
+            isCorrectObject = !hasError;
             var features = GetComponentsInChildren<TestObjectFeature>();
-            var defect = GetRandomDefect(features.Length, error);
-            for (var i = 0; i < features.Length; i++)
+
+            if (hasError)
             {
-                features[i].SetDefect(defect[i]);
+                var defect = Random.Range(0, features.Length);
+                for (var i = 0; i < features.Length; i++)
+                {
+                    features[i].SetDefect(i == defect);
+                }
+            }
+            else
+            {
+                foreach (var feature in features)
+                {
+                    feature.SetDefect(false);
+                }
             }
         }
-
-        /// <summary>
-        /// defect 기능을 입력 correct object
-        /// </summary>
-        public void SetDefect(List<TestObjectFeature> defectFeatures)
+        
+        public void Initialize(List<TestObjectFeature> defectFeatures)
         {
             isCorrectObject = defectFeatures.Count <= 0;
             var features = GetComponentsInChildren<TestObjectFeature>();
@@ -57,29 +61,5 @@ namespace _TestObject
                 }
             }
         }
-
-        /// <summary>
-        /// 랜덤으로 pick 개수만큼 true로 설정
-        /// </summary>
-        private bool[] GetRandomDefect(int count,int pick)
-        {
-            var arr = new int[count];
-            var ret = new bool[count];
-            //초기화
-            for (var i = 0; i < count; i++)
-            {
-                arr[i] = i;
-                ret[i] = false;
-            }
-            //셔플
-            for (var i = 0; i < pick; i++)
-            {
-                var rand = Random.Range(i, pick);
-                ret[arr[rand]] = true;
-                arr[rand] = arr[i];
-            }
-            return ret;
-        }
     }
-
 }
