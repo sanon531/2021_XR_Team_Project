@@ -32,8 +32,6 @@ public class Spawner_practice : Spawner_Base
     public void SpawnInOrder(int _currentStage)
     {
         _current_StageInt = _currentStage;
-        _currentPickNum = 3;
-        int _true_i = Random.Range(0, 3);
 
         List<GameObject> temptList = new List<GameObject>();
 
@@ -58,6 +56,8 @@ public class Spawner_practice : Spawner_Base
                 _spawnObject.GetComponent<TestObject>().Initialize(true);
             else
                 _spawnObject.GetComponent<TestObject>().Initialize(false);
+
+            _currentPickNum ++;
         }
     }
 

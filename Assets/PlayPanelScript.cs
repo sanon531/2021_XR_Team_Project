@@ -62,7 +62,7 @@ public class PlayPanelScript : MonoBehaviour
                 ++_currentWave;
                 Spawner_practice.instance.ClearObject();
 
-                if (_currentWave > 1)
+                if (_currentWave > 2)
                 {
                     InGameManager.instance.GameEnd();
                     ShowGameResult();
