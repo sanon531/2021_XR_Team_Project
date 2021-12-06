@@ -14,7 +14,10 @@ public class Spawner_practice : Spawner_Base
     List<Transform> _spawnPoss;
 
     [SerializeField]
-    List <GameObject> _checkObject;
+    List <GameObject> _checkObject_Stage_1;
+    [SerializeField]
+    List<GameObject> _checkObject_Stage_2;
+
     [SerializeField]
     List<GameObject> _currentSettedList = new List<GameObject>();
 
@@ -30,15 +33,21 @@ public class Spawner_practice : Spawner_Base
 
     [SerializeField]
     int _currentPickNum = 3;
-
-    public void SpawnInOrder()
+    int _current_StageInt;
+    public void SpawnInOrder(int _currentStage)
     {
+        _current_StageInt = _currentStage;
         _currentPickNum = 3;
         int _true_i = Random.Range(0, 3);
         int i = 0;
         foreach (Transform _tranform in _spawnPoss)
         {
-            GameObject _spawnObject = Instantiate(_checkObject[i], _tranform.position, Quaternion.identity, gameObject.transform);
+            GameObject _spawnObject = gameObject;
+            if (_currentStage == 0)
+                _spawnObject = Instantiate(_checkObject_Stage_1[i], _tranform.position, Quaternion.identity, gameObject.transform);
+            else
+                _spawnObject = Instantiate(_checkObject_Stage_2[i], _tranform.position, Quaternion.identity, gameObject.transform);
+
             _currentSettedList.Add(_spawnObject);
             if (i != _true_i)
             {
@@ -67,7 +76,7 @@ public class Spawner_practice : Spawner_Base
                 PlayPanelScript.instance.WrongSelected();
 
             if (_currentPickNum <= 0)
-                SpawnInOrder();
+                SpawnInOrder(_current_StageInt);
         }
 
     }
