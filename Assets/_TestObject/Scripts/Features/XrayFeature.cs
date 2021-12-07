@@ -25,10 +25,8 @@ namespace _TestObject
 
         private void Start()
         {
-            if (isDefected)
-            {
-                transform.GetChild(0).gameObject.SetActive(false);
-            }
+            transform.GetChild(0).gameObject.SetActive(false);
+            
         }
         void Update()
         {
@@ -42,16 +40,21 @@ namespace _TestObject
                     checkHit(vertex[4], offset[4]) && checkHit(vertex[5], offset[5]) && checkHit(vertex[6], offset[6]) && checkHit(vertex[7], offset[7]))
                 {
                     changeRenderMode(transform.parent.parent.GetComponent<MeshRenderer>().material, BlendMode.Transparent);
-                    
+                    if (!isDefected)
+                    {
+                        transform.GetChild(0).gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
                     changeRenderMode(transform.parent.parent.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+                    transform.GetChild(0).gameObject.SetActive(false);
                 }
             }
             else
             {
                 changeRenderMode(transform.parent.parent.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+                transform.GetChild(0).gameObject.SetActive(false);
             }
 
         }
