@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: -6819609869658204672}
   - component: {fileID: -3369031404459208151}
   - component: {fileID: 4997179222255737233}
+  - component: {fileID: 414539593055560543}
   m_Layer: 7
   m_Name: SM_Veh_Car_Ambo_01 1
   m_TagString: Untagged
@@ -709,10 +710,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 414539593055560543}
+        m_TargetAssemblyTypeName: CarState, Assembly-CSharp
+        m_MethodName: ObjectHeld
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 414539593055560543}
+        m_TargetAssemblyTypeName: CarState, Assembly-CSharp
+        m_MethodName: ObjectLetGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -796,6 +821,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.472612, y: 2.3723326, z: 5.0940275}
   m_Center: {x: 0, y: 1.396498, z: 0.13655901}
+--- !u!114 &414539593055560543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a040149c1b44e149a0c6868f7566bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHeld: 0
+  heldtime: 0
 --- !u!1 &174714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,9 +1318,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDefect: 0
+  carState: {fileID: 414539593055560543}
   rb: {fileID: -6819609869658204672}
   playSpeedThreshold: 7
-  waitTime: 0.1
+  playAgainWaitTime: 0.5
+  heldTimeThreshold: 0.4
 --- !u!82 &7160762251726870373
 AudioSource:
   m_ObjectHideFlags: 0
