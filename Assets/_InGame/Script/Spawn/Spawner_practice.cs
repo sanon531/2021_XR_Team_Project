@@ -26,11 +26,12 @@ public class Spawner_practice : Spawner_Base
     }
 
 
-    [SerializeField] int _currentPickNum = 3;
+    [SerializeField] int _currentPickNum = 0;
     int _current_StageInt;
 
     public void SpawnInOrder(int _currentStage)
     {
+        _currentPickNum = 0;
         _current_StageInt = _currentStage;
 
         List<GameObject> temptList = new List<GameObject>();

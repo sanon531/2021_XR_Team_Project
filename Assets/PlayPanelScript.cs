@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-// °ÔÀÓ µµÁßÀÇ ¸Å´ÏÁ®ÀÎ ±×³É ÇØ 
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ 
 public class PlayPanelScript : MonoBehaviour
 {
     public static PlayPanelScript instance;
@@ -39,6 +39,7 @@ public class PlayPanelScript : MonoBehaviour
         _isGameStart = true;
         _evalSet.SetActive(true);
         Spawner_practice.instance.SpawnInOrder(0);
+        _currentWave = 0;
     }
 
 
