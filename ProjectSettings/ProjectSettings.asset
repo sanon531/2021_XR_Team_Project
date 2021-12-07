@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: XR_Build
-  defaultCursor: {fileID: 2800000, guid: d01ba7e3909e71c44b33f67f8a3ae9a4, type: 3}
+  defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -141,6 +141,12 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 62b2ddbba11018d43b3d453431d35e0f, type: 2}
+  - {fileID: -5812198480254165252, guid: 4c67eeed98b7b3a4cafbbf4d0cd46ed1, type: 2}
+  - {fileID: 11400000, guid: ccadcbf7ee9d0b4449edddcea1cd1dab, type: 2}
+  - {fileID: -7636163827385657431, guid: 0647c03b6d54c3342820db8b2ff238cc, type: 2}
+  - {fileID: 11400000, guid: f30371f5dbedc5f4e9666b801fa123a4, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1

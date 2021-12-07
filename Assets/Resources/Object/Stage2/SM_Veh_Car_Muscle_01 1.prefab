@@ -1302,6 +1302,10 @@ PrefabInstance:
       propertyPath: meshRenderer
       value: 
       objectReference: {fileID: 2383878}
+    - target: {fileID: 7928322049355766333, guid: 6d9e50a7727987741993e20e7a553ea5, type: 3}
+      propertyPath: changeColorOnDefect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d9e50a7727987741993e20e7a553ea5, type: 3}
 --- !u!4 &8593114665268197342 stripped

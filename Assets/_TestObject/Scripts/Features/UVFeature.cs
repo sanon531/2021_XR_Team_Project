@@ -13,16 +13,19 @@ namespace _TestObject
         [SerializeField] private bool changeColorOnDefect;//normal일시 색이 변하는가? defect일시 색이 변하는가?
         [SerializeField] private MeshRenderer meshRenderer;
         [SerializeField] private Color uvColor = Color.blue;
+        [SerializeField]
         private Color m_OldColor;
 
         private bool isChangeColor => changeColorOnDefect == IsDefect;
 
         
 
-        private void Awake()
+        private void Start()
         {
             caster.onTriggerEnter += OnUvEnter;
             caster.onTriggerExit += OnUvExit;
+            var mat = meshRenderer.material;
+            m_OldColor = mat.color;
         }
 
         private void OnUvEnter(Collider other)
@@ -30,24 +33,26 @@ namespace _TestObject
             if(!isChangeColor)
                 return;
             
-            if(Tools.IsInLayerMask(other.gameObject.layer,uvLayer)) 
-                ChangeColor(uvColor);
+            if(Tools.IsInLayerMask(other.gameObject.layer,uvLayer))
+                ChangeColorByChange(uvColor);
         }
 
         private void OnUvExit(Collider other)
         {
-            if(!isChangeColor)
-                return;
-            
             if(Tools.IsInLayerMask(other.gameObject.layer,uvLayer)) 
-                ChangeColor(m_OldColor);
+                ChangeColorOld(m_OldColor);
         }
         
-        private void ChangeColor(Color color)
+        private void ChangeColorOld(Color color)
         {
             var mat = meshRenderer.material;
-            m_OldColor = mat.color;
-            mat.color = color;
+            mat.color = m_OldColor;
         }
+        private void ChangeColorByChange(Color color)
+        {
+            var mat = meshRenderer.material;
+            mat.color = uvColor;
+        }
+
     }
 }
