@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2354360241537128412}
   - component: {fileID: 2354360241537128417}
   - component: {fileID: 2354360241537128416}
-  - component: {fileID: 2354360241537128423}
+  - component: {fileID: 1695942615312065547}
   - component: {fileID: 2354360241537128418}
   - component: {fileID: 2354360241537128419}
   m_Layer: 7
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!114 &2354360241537128423
+--- !u!114 &1695942615312065547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2354360241537128422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad32ef710e310d47b76b73529ef938b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a9af4451fb929242b16c1356460f695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &2354360241537128418

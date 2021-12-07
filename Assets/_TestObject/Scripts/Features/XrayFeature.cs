@@ -23,11 +23,11 @@ namespace _TestObject
 
         private bool isDefected => IsDefect;
 
-        private void Awake()
+        private void Start()
         {
             if (isDefected)
             {
-                //결함 설정 여기서 하면 되는거 아님? 안되네
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         void Update()
