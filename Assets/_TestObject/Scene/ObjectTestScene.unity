@@ -206,6 +206,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &210088862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5270987742286108031, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
+  m_PrefabInstance: {fileID: 1270893078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f064256dd70e4fbf90aeb53461e18510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &355225654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,6 +490,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5270987741639690726, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
+      propertyPath: useDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270987741639690726, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
+      propertyPath: debug_defectFeatures.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270987741639690726, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
+      propertyPath: debug_defectFeatures.Array.data[0]
+      value: 
+      objectReference: {fileID: 1674327199}
+    - target: {fileID: 5270987741639690726, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
+      propertyPath: debug_defectFeatures.Array.data[1]
+      value: 
+      objectReference: {fileID: 210088862}
     - target: {fileID: 7309115399151955774, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
       propertyPath: m_Name
       value: char_1
@@ -622,6 +649,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1674327199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5270987743273349674, guid: 03f116976c1579c4da282142f5f3c6da, type: 3}
+  m_PrefabInstance: {fileID: 1270893078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f064256dd70e4fbf90aeb53461e18510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &514628837969290382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -629,6 +667,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1703753473, guid: 1c930c692e2e70445873d1e26863e42b, type: 3}
+      propertyPath: useDebug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1883029024278958, guid: 1c930c692e2e70445873d1e26863e42b, type: 3}
       propertyPath: m_Name
       value: Bronze
@@ -743,6 +785,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1915196981, guid: b62de269504018a4cbfe6eb0f757490c, type: 3}
+      propertyPath: useDebug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1532648310549764, guid: b62de269504018a4cbfe6eb0f757490c, type: 3}
       propertyPath: m_Name
       value: Gold
@@ -808,6 +854,10 @@ PrefabInstance:
       propertyPath: debug_defectFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2140680888, guid: 67d37a85ba2ac5d4288506b53c188546, type: 3}
+      propertyPath: debug_defectFeatures.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1529806831123294, guid: 67d37a85ba2ac5d4288506b53c188546, type: 3}
       propertyPath: m_Name
       value: Silver
@@ -822,7 +872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680382009048210, guid: 67d37a85ba2ac5d4288506b53c188546, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.964
+      value: 1.368
       objectReference: {fileID: 0}
     - target: {fileID: 4680382009048210, guid: 67d37a85ba2ac5d4288506b53c188546, type: 3}
       propertyPath: m_LocalPosition.z

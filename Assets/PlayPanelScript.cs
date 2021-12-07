@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 // 게임 도중의 매니져인 그냥 해 
 public class PlayPanelScript : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class PlayPanelScript : MonoBehaviour
     {
         _isGameStart = true;
         _evalSet.SetActive(true);
-        Spawner_practice.instance.SpawnInOrder();
+        Spawner_practice.instance.SpawnInOrder(0);
     }
 
 
@@ -61,14 +62,14 @@ public class PlayPanelScript : MonoBehaviour
                 ++_currentWave;
                 Spawner_practice.instance.ClearObject();
 
-                if (_currentWave > 2)
+                if (_currentWave > 1)
                 {
                     InGameManager.instance.GameEnd();
                     ShowGameResult();
                     return;
                 }
 
-                Spawner_practice.instance.SpawnInOrder();
+                Spawner_practice.instance.SpawnInOrder(_currentWave);
                 _currentWaveName.SetText("Current Wave :" + (_currentWave+1).ToString());
             }
 

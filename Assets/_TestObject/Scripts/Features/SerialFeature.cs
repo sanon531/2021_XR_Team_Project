@@ -21,16 +21,18 @@ namespace _TestObject
         private const int MinYear = 2010;
         protected override void OnNormal()
         {
-            textMesh.text = GetSerialType() + GetYear();
+            textMesh.text = GetSerialType() +"_"+ GetYear();
         }
         
         protected override void OnDefect()
         {
-            var rand = Random.Range(0, 2);
-            switch (rand)
+            if (Random.Range(0, 2) == 0)
             {
-                case 0: textMesh.text = GetWrongSerialType() +"_"+ GetYear(); break;
-                case 1: textMesh.text = GetSerialType() +"_"+ GetWrongYear(); break;
+                textMesh.text = GetWrongSerialType() +"_"+ GetYear();
+            }
+            else
+            {
+                textMesh.text = GetSerialType() +"_"+ GetWrongYear();
             }
         }
 
