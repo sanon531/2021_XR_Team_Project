@@ -85,12 +85,12 @@ public class PlayPanelScript : MonoBehaviour
     public void RightSelected()
     {
         _currentScore += 100;
-        _currentScorePanel.SetText(_currentScore.ToString());
+        _currentScorePanel.SetText("Score : "+_currentScore.ToString());
     }
     public void WrongSelected()
     {
         _currentTime += 10f;
-        _currentScorePanel.SetText(_currentScore.ToString());
+        _currentScorePanel.SetText("Score : " + _currentScore.ToString());
 
     }
 

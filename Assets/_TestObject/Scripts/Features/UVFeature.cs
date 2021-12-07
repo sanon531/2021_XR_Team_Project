@@ -17,6 +17,8 @@ namespace _TestObject
 
         private bool isChangeColor => changeColorOnDefect == IsDefect;
 
+        
+
         private void Awake()
         {
             caster.onTriggerEnter += OnUvEnter;

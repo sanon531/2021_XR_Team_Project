@@ -10,16 +10,17 @@ namespace _TestObject
     {
         [SerializeField] private CollisionCaster caster;
         private float distance;
-        private bool isDefected => IsDefect;
+        private bool defected;
 
-        private void Awake()
+        private void Start()
         {
             caster.onTriggerStay += OnMagnetStay;
         }
 
         private void OnMagnetStay(Collider other)
         {
-            if (!isDefected)
+
+            if (!defected)
                 return;
 
             if (other.gameObject.tag == "Magnet")
@@ -32,6 +33,19 @@ namespace _TestObject
                 }
                 transform.parent.parent.position += offset.normalized * Time.deltaTime / distance;
             }
+        }
+
+
+
+        protected override void OnNormal()
+        {
+            defected = false;
+        }
+
+        protected override void OnDefect()
+        {
+            Debug.Log("magnet");
+            defected = true;
         }
 
     }

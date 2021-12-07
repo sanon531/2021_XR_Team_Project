@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 public class HandleBehaviour : MonoBehaviour
 {
+
     private Vector3 initialLocalPosition;
     private Vector3 initialLocalRotation;
+    public static HandleBehaviour instance;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        instance = this;
         initialLocalPosition = transform.localPosition;
         initialLocalRotation = transform.localRotation.eulerAngles;
 
@@ -25,7 +29,7 @@ public class HandleBehaviour : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
