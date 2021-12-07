@@ -1320,7 +1320,7 @@ MonoBehaviour:
   isDefect: 0
   carState: {fileID: 414539593055560543}
   rb: {fileID: -6819609869658204672}
-  playSpeedThreshold: 4
+  playSpeedThreshold: 7
   playAgainWaitTime: 0.5
   heldTimeThreshold: 0.4
 --- !u!82 &7160762251726870373
