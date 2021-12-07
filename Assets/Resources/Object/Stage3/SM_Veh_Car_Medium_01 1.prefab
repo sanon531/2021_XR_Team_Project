@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
+  heldtime: 0
 --- !u!1 &169676
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,8 +961,9 @@ MonoBehaviour:
   isDefect: 0
   carState: {fileID: 4060773269238403002}
   rb: {fileID: 4551352899197734968}
-  playSpeedThreshold: 7
-  waitTime: 0.1
+  playSpeedThreshold: 4
+  playAgainWaitTime: 0.5
+  heldTimeThreshold: 0.4
 --- !u!82 &2496270186701433946
 AudioSource:
   m_ObjectHideFlags: 0
